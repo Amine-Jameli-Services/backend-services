@@ -2,10 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body { 
             font-family: Arial, sans-serif; 
-            background-color: white; 
+            background-color: #f7f7f7; 
             color: #333; 
             margin: 0; 
             padding: 0; 
@@ -13,9 +14,8 @@
         .container {
             width: 100%;
             max-width: 600px;
-            margin: 0 auto;
+            margin: 20px auto;
             background-color: white;
-            border: 1px solid #ddd;
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
@@ -33,15 +33,18 @@
         }
         .content h1 {
             font-size: 24px;
+            color: #333;
             margin-bottom: 20px;
         }
         .content p {
             font-size: 16px;
             line-height: 1.5;
-            margin-bottom: 10px;
+            color: #666;
+            margin-bottom: 20px;
         }
         .content strong {
             font-size: 16px;
+            color: #333;
         }
         .button {
             display: inline-block;
@@ -56,9 +59,14 @@
         .footer { 
             background-color: red; 
             color: white; 
-            padding: 10px; 
+            padding: 20px; 
             text-align: center; 
             font-size: 14px;
+        }
+        @media (max-width: 600px) {
+            .content, .header, .footer {
+                padding: 20px;
+            }
         }
     </style>
 </head>
