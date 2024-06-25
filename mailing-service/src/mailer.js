@@ -1,4 +1,3 @@
-
 const nodemailer = require('nodemailer');
 const hbs = require('handlebars');
 const fs = require('fs');
@@ -15,12 +14,7 @@ const transporter = nodemailer.createTransport({
 });
 
 const readTemplate = (templateName) => {
-    // Adjust path to point to the correct location of templates
-    const isNetlify = process.env.NETLIFY === 'true';
-    const filePath = isNetlify
-        ? path.resolve(__dirname, '..', '..', '..', 'templates', `${templateName}.hbs`)
-        : path.resolve(__dirname, '..', '..', 'templates', `${templateName}.hbs`);
-
+    const filePath = path.join(__dirname, '..', '..', 'templates', `${templateName}.hbs`);
     console.log(`Reading template file from: ${filePath}`);
     if (!fs.existsSync(filePath)) {
         console.error(`Template file ${filePath} does not exist`);

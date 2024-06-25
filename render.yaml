@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: backend-services
+    env: node
+    plan: free
+    buildCommand: 'npm install'
+    startCommand: 'node mailing-service/src/app.js'
+    envVars:
+      - key: ZOHO_EMAIL
+        value: jameli.amine@aminejameli.tn
+      - key: ZOHO_PASSWORD
+        value: dEPYBLbbRYmd
