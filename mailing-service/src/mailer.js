@@ -1,3 +1,4 @@
+require('dotenv').config();
 const nodemailer = require('nodemailer');
 const hbs = require('handlebars');
 const fs = require('fs');
@@ -14,25 +15,32 @@ const transporter = nodemailer.createTransport({
 });
 
 const readTemplate = (templateName) => {
-  const filePath = path.resolve(__dirname, '..', '..', 'templates', `${templateName}.hbs`);
-  console.log(`Reading template file from: ${filePath}`);
-  if (!fs.existsSync(filePath)) {
-      console.error(`Template file ${filePath} does not exist`);
-      throw new Error(`Template file ${filePath} does not exist`);
-  }
-  const source = fs.readFileSync(filePath, 'utf-8');
-  return hbs.compile(source);
+    const cwd = process.cwd();
+    const filePath = path.join(cwd, 'templates', `${templateName}.hbs`);
+    console.log(`Current working directory: ${cwd}`);
+    console.log(`Reading template file from: ${filePath}`);
+    if (!fs.existsSync(filePath)) {
+        console.error(`Template file ${filePath} does not exist`);
+        throw new Error(`Template file ${filePath} does not exist`);
+    }
+    const source = fs.readFileSync(filePath, 'utf-8');
+    return hbs.compile(source);
 };
 
 const sendEmail = async (to, subject, templateName, context) => {
-    const template = readTemplate(templateName);
-    const htmlToSend = template(context);
-    await transporter.sendMail({
-        from: `"Your Company" <${process.env.ZOHO_EMAIL}>`,
-        to: to,
-        subject: subject,
-        html: htmlToSend
-    });
+    try {
+        const template = readTemplate(templateName);
+        const htmlToSend = template(context);
+        await transporter.sendMail({
+            from: `"Your Company" <${process.env.ZOHO_EMAIL}>`,
+            to: to,
+            subject: subject,
+            html: htmlToSend
+        });
+    } catch (error) {
+        console.error(`Failed to send email: ${error.message}`);
+        throw error;
+    }
 };
 
 module.exports = sendEmail;
