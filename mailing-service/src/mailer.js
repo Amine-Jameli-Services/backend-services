@@ -1,4 +1,4 @@
-require('dotenv').config();
+
 const nodemailer = require('nodemailer');
 const hbs = require('handlebars');
 const fs = require('fs');
