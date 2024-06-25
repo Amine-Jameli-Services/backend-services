@@ -23,7 +23,7 @@ const sendEmail = async (to, subject, templateName, context) => {
     const template = readTemplate(templateName);
     const htmlToSend = template(context);
     await transporter.sendMail({
-        from: `"Your Company" <${process.env.ZOHO_EMAIL}>`,
+        from: `"Amine Jameli Services"  <contact@aminejameli.tn>`,
         to: to,
         subject: subject,
         html: htmlToSend
