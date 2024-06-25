@@ -14,11 +14,14 @@ const transporter = nodemailer.createTransport({
 });
 
 const readTemplate = (templateName) => {
-    const filePath = path.resolve(__dirname, '..', '..', 'templates', `${templateName}.hbs`);
-    const source = fs.readFileSync(filePath, 'utf-8');
-    return hbs.compile(source);
+  // Adjust path to point to the correct location of templates
+  const filePath = path.resolve(__dirname, '..', '..', 'templates', `${templateName}.hbs`);
+  if (!fs.existsSync(filePath)) {
+      throw new Error(`Template file ${filePath} does not exist`);
+  }
+  const source = fs.readFileSync(filePath, 'utf-8');
+  return hbs.compile(source);
 };
-
 const sendEmail = async (to, subject, templateName, context) => {
     const template = readTemplate(templateName);
     const htmlToSend = template(context);
