@@ -14,7 +14,7 @@ const transporter = nodemailer.createTransport({
 });
 
 const readTemplate = (templateName) => {
-    const filePath = path.join(__dirname, 'templates', `${templateName}.hbs`);
+    const filePath = path.join(__dirname, '..', 'src', 'templates', `${templateName}.hbs`);
     const source = fs.readFileSync(filePath, 'utf-8');
     return hbs.compile(source);
 };
