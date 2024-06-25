@@ -57,6 +57,18 @@
             text-decoration: none;
             border-radius: 5px;
         }
+        .copy-button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px 0;
+            font-size: 14px;
+            color: #333;
+            background-color: #f7f7f7;
+            text-decoration: none;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            cursor: pointer;
+        }
         .footer { 
             background-color: red; 
             color: white; 
@@ -70,6 +82,16 @@
             }
         }
     </style>
+    <script>
+        function copyOrderCode() {
+            var orderCode = "{{orderCode}}";
+            navigator.clipboard.writeText(orderCode).then(function() {
+                alert('Order code copied to clipboard!');
+            }, function(err) {
+                console.error('Could not copy text: ', err);
+            });
+        }
+    </script>
 </head>
 <body>
     <div class="container">
@@ -80,6 +102,7 @@
             <h1>Thank you for your order!</h1>
             <p>We have received your order and will begin processing it soon.</p>
             <p><strong>Order Code:</strong> {{orderCode}}</p>
+            <button class="copy-button" onclick="copyOrderCode()">Copy Order Code</button>
             <p><strong>Tracking Link:</strong> <a href="{{trackingLink}}" class="button">Track your order</a></p>
         </div>
         <div class="footer">
