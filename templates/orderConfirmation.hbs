@@ -30,7 +30,15 @@
             max-width: 100%;
         }
         .content { 
+            display: flex;
+            align-items: center;
             padding: 30px; 
+        }
+        .content-text {
+            flex: 1;
+        }
+        .content-icon {
+            margin-left: 20px;
         }
         .content h1 {
             font-size: 24px;
@@ -96,14 +104,19 @@
 <body>
     <div class="container">
         <div class="header">
-            <img src="https://i.postimg.cc/XN2P7RWn/Amine-Jameli-Services-Logo.png" alt="Your Company Logo">
+            <img src="https://i.ibb.co/kGg4TGD/Amine-Jameli-Services-Logo.png" alt="Amine Jameli Services">
         </div>
         <div class="content">
-            <h1>Thank you for your order!</h1>
-            <p>We have received your order and will begin processing it soon.</p>
-            <p><strong>Order Code:</strong> {{orderCode}}</p>
-            <button class="copy-button" onclick="copyOrderCode()">Copy Order Code</button>
-            <p><strong>Tracking Link:</strong> <a href="{{trackingLink}}" class="button">Track your order</a></p>
+            <div class="content-text">
+                <h1>Thank you for your order!</h1>
+                <p>We have received your order and will begin processing it soon.</p>
+                <p><strong>Order Code:</strong> {{orderCode}}</p>
+                <button class="copy-button" onclick="copyOrderCode()">Copy Order Code</button>
+                <p><strong>Tracking Link:</strong> <a href="{{trackingLink}}" class="button">Track your order</a></p>
+            </div>
+            <div class="content-icon">
+                <img src="https://i.ibb.co/Ss4z9Zq/order-confirmation.png" alt="Order Confirmation " width="80">
+            </div>
         </div>
         <div class="footer">
             Thank you for choosing our service!
