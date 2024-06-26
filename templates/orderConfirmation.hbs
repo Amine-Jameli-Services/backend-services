@@ -26,7 +26,7 @@
             text-align: center; 
         }
         .header img { 
-            height: 80px; /* Increase the height for better visibility */
+            height: 80px; 
             max-width: 100%;
         }
         .content { 
@@ -88,6 +88,13 @@
             .content, .header, .footer {
                 padding: 20px;
             }
+            .content {
+                flex-direction: column;
+            }
+            .content-icon {
+                margin: 20px 0 0 0;
+                text-align: center;
+            }
         }
     </style>
     <script>
@@ -115,7 +122,7 @@
                 <p><strong>Tracking Link:</strong> <a href="{{trackingLink}}" class="button">Track your order</a></p>
             </div>
             <div class="content-icon">
-                <img src="https://i.ibb.co/Ss4z9Zq/order-confirmation.png" alt="Order Confirmation " width="80">
+                <img src="https://i.ibb.co/Ss4z9Zq/order-confirmation.png" alt="Order Confirmation" width="80">
             </div>
         </div>
         <div class="footer">
